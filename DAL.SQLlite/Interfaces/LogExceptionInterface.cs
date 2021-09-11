@@ -4,10 +4,10 @@ using System.Text;
 
 namespace DAL.SQLlite.Interfaces
 {
-    public class LogException
+    public class LogExceptionInterface
     {
-        public static LogException getLogException(Exception ex, string localmethod, string detalhes)
-        => new LogException()
+        public static LogExceptionInterface getLogException(Exception ex, string localmethod, string detalhes)
+        => new LogExceptionInterface()
             {
                 ID = 0,
                 Data_Log = DateTime.Now,
@@ -18,8 +18,8 @@ namespace DAL.SQLlite.Interfaces
                 Detalhes = !string.IsNullOrEmpty(detalhes) ? detalhes : ""
         };
 
-        public static LogException getLogException(Exception ex)
-        => new LogException()
+        public static LogExceptionInterface getLogException(Exception ex)
+        => new LogExceptionInterface()
         {
             ID = 0,
             Data_Log = DateTime.Now,

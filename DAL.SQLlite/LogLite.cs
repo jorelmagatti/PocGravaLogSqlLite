@@ -11,7 +11,7 @@ namespace DAL.SQLlite
     {
         private static LogRepository _repo { get; set; } = new LogRepository();
 
-        public static async Task<bool> LogWarn(LogException log)
+        public static async Task<bool> LogWarn(LogExceptionInterface log)
           => await _repo.GravaLog(log);
     }
 }

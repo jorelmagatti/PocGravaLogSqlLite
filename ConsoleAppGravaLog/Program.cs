@@ -18,7 +18,7 @@ namespace ConsoleAppGravaLog
             }
             catch(Exception ex)
             {
-                LogLite.LogWarn(LogException.getLogException(ex, fullMethodName, "exceção produzida na Main")).Wait();
+                LogLite.LogWarn(LogExceptionInterface.getLogException(ex, fullMethodName, "exceção produzida na Main")).Wait();
                 Console.WriteLine(ex.Message);
             }
         }

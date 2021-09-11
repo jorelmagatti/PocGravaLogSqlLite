@@ -12,7 +12,7 @@ namespace DAL.SQLlite.Classes
 {
     public class LogRepository : SqLiteBaseRepository
     {
-        public async Task<bool> GravaLog(LogException log)
+        public async Task<bool> GravaLog(LogExceptionInterface log)
         {
             try
             {

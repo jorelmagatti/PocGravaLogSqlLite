@@ -13,13 +13,10 @@ namespace DAL.SQLlite.Repositorio
         public static SqliteConnection SimpleDbConnection()
         => new SqliteConnection("Data Source=" + DbFile);
         
-
         public static bool CriarArquivoDb()
         {
             try
             {
-                DbFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\dados\Logs.db";
-
                 if(!Directory.Exists(Path.GetDirectoryName(DbFile)))
                     Directory.CreateDirectory(Path.GetDirectoryName(DbFile));
 
