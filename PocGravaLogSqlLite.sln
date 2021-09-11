@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL.SQLlite", "DAL.SQLlite\DAL.SQLlite.csproj", "{480ACA1E-02DA-456F-97AF-B81600932C98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppGravaLog", "ConsoleAppGravaLog\ConsoleAppGravaLog.csproj", "{A090D022-F6F5-41D5-A7C1-1488BD623258}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{480ACA1E-02DA-456F-97AF-B81600932C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{480ACA1E-02DA-456F-97AF-B81600932C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{480ACA1E-02DA-456F-97AF-B81600932C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{480ACA1E-02DA-456F-97AF-B81600932C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A090D022-F6F5-41D5-A7C1-1488BD623258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A090D022-F6F5-41D5-A7C1-1488BD623258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A090D022-F6F5-41D5-A7C1-1488BD623258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A090D022-F6F5-41D5-A7C1-1488BD623258}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5816E3A3-6B70-42F6-BFA0-E51FD873A4BF}
+	EndGlobalSection
+EndGlobal
