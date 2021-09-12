@@ -13,7 +13,7 @@ namespace DAL.SQLlite.Repositorio
         public static SqliteConnection SimpleDbConnection()
         => new SqliteConnection("Data Source=" + DbFile);
         
-        public static bool CriarArquivoDb()
+        internal static bool CriarArquivoDb()
         {
             try
             {

@@ -1,4 +1,5 @@
-﻿using DAL.SQLlite.Classes;
+﻿using DAL.SQLlite;
+using DAL.SQLlite.Classes;
 using DAL.SQLlite.Interfaces;
 using System;
 using System.Reflection;
