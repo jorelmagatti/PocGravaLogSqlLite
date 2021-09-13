@@ -3,6 +3,7 @@ using DAL.SQLlite.Repositorio;
 using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace DAL.SQLlite.Classes
 {
     public class LogRepository : SqLiteBaseRepository
     {
-        private string DbFile { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\dados\Logs.db";
+        private string DbFile { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + ConfigurationManager.AppSettings["FinalLocalLog"];
         
         public async Task<bool> GravaLog(LogExceptionInterface log)
         {
@@ -64,11 +65,10 @@ namespace DAL.SQLlite.Classes
                                         COMMIT TRANSACTION;
                                         PRAGMA foreign_keys = on;
                                     ";
-                if (CriarArquivoDb())
-                    ExecuteScriptSqLite(DbFile, script);
-                    
-                
-                return true;
+                if (CriarArquivoDb(DbFile))
+                    return ExecuteScriptSqLite(DbFile, script);
+                else
+                    return false;
             }
             catch (Exception)
             {

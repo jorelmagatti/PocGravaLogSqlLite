@@ -47,7 +47,7 @@ namespace DAL.SQLlite.Repositorio
                     return false;
 
                 if (!File.Exists(DbFile))
-                        return false;
+                    return false;
 
                 await Task.Run(() => {
                     using (var cnn = SimpleDbConnection(DbFile))
@@ -68,12 +68,11 @@ namespace DAL.SQLlite.Repositorio
         {
             try
             {
-                if (CriarArquivoDb())
-                    using (var cnn = SimpleDbConnection(DbFile))
-                    {
-                        cnn.Open();
-                        cnn.Query(script);
-                    }
+                using (var cnn = SimpleDbConnection(DbFile))
+                {
+                    cnn.Open();
+                    cnn.Query(script);
+                }
                 return true;
             }
             catch (Exception)
