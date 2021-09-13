@@ -12,6 +12,8 @@ namespace DAL.SQLlite.Classes
 {
     public class LogRepository : SqLiteBaseRepository
     {
+        private string DbFile { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\dados\Logs.db";
+        
         public async Task<bool> GravaLog(LogExceptionInterface log)
         {
             try
@@ -20,26 +22,16 @@ namespace DAL.SQLlite.Classes
                     return false;
 
                 if (!File.Exists(DbFile))
-                    if (!CriaDataBaseTabelaLog())
+                    if (!CriaDataBaseTabelaLog(DbFile))
                         return false;
 
-                await Task.Run(() => { 
-                    using (var cnn = SimpleDbConnection())
-                    {
-                        cnn.Open();
-                        log.ID = cnn.Query<long>(
-                                    @"INSERT INTO LOG 
+                string script = @"INSERT INTO LOG 
                                     (Data_Log, Message, LocalMethod, Detalhes, Source, StackTrace)
                                     VALUES 
                                     (@Data_Log, @Message, @LocalMethod, @Detalhes, @Source, @StackTrace);
-                            select last_insert_rowid()", log).First();
-                    }                
-                });
+                            select last_insert_rowid()";
 
-                if (log.ID != 0)
-                    return true;
-                else
-                    return false;
+                return await ExecuteValidateSqLite<LogExceptionInterface>(log, DbFile, script);
             }
             catch (Exception)
             {
@@ -48,16 +40,11 @@ namespace DAL.SQLlite.Classes
 
         }
 
-        private bool CriaDataBaseTabelaLog()
+        private bool CriaDataBaseTabelaLog(string DbFile)
         {
             try
             {
-                if (CriarArquivoDb())
-                    using (var cnn = SimpleDbConnection())
-                    {
-                        cnn.Open();
-                        cnn.Query(
-                                    @"
+                string script = @"
                                         PRAGMA foreign_keys = off;
                                         BEGIN TRANSACTION;
 
@@ -76,8 +63,10 @@ namespace DAL.SQLlite.Classes
 
                                         COMMIT TRANSACTION;
                                         PRAGMA foreign_keys = on;
-                                    ");
-                    }
+                                    ";
+                if (CriarArquivoDb())
+                    ExecuteScriptSqLite(DbFile, script);
+                    
                 
                 return true;
             }
