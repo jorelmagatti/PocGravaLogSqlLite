@@ -34,6 +34,7 @@ namespace DAL.SQLlite.Interfaces
         public long ID { get; set; } = 0;
         public DateTime Data_Log { get; set; } = DateTime.Now;
         public string LocalMethod { get; set; } = string.Empty;
+        public string Tipo { get; set; } = string.Empty;
         public string Detalhes { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
         public string StackTrace { get; set; } = string.Empty;

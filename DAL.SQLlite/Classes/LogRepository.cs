@@ -27,9 +27,9 @@ namespace DAL.SQLlite.Classes
                         return false;
 
                 string script = @"INSERT INTO LOG 
-                                    (Data_Log, Message, LocalMethod, Detalhes, Source, StackTrace)
+                                    (Data_Log, Message, LocalMethod,Tipo, Detalhes, Source, StackTrace)
                                     VALUES 
-                                    (@Data_Log, @Message, @LocalMethod, @Detalhes, @Source, @StackTrace);
+                                    (@Data_Log, @Message, @LocalMethod, @Tipo, @Detalhes, @Source, @StackTrace);
                             select last_insert_rowid()";
 
                 return await ExecuteValidateSqLite<LogExceptionInterface>(log, DbFile, script);
@@ -57,6 +57,7 @@ namespace DAL.SQLlite.Classes
                                             Data_log    DATETIME,
                                             Message     VARCHAR (500),
                                             LocalMethod VARCHAR (500),
+                                            Tipo    VARCHAR (500),
                                             Detalhes    VARCHAR (500),
                                             Source      VARCHAR (500),
                                             StackTrace  VARCHAR (500) 
