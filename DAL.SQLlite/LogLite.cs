@@ -9,7 +9,7 @@ namespace DAL.SQLlite
 {
     public class LogLite
     {
-        public enum ExLogType
+        private enum ExLogType
         {
             Warning,
             Error,
